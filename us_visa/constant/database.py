@@ -1,5 +1,2 @@
-
-MONGODB_URL_KEY = "MONGODB_URL"
-
 DATABASE_NAME = "iNeuron"
 COLLECTION_NAME = "us_visa"
