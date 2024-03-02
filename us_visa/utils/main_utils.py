@@ -29,6 +29,21 @@ def write_yaml_file(file_path: str, content: object, replace: bool = False) -> N
             yaml.dump(content, file)
     except Exception as e:
         raise USvisaException(e, sys) from e
+    
+def load_object(file_path: str) -> object:
+    logging.info("Entered the load_object method of utils")
+
+    try:
+
+        with open(file_path, "rb") as file_obj:
+            obj = dill.load(file_obj)
+
+        logging.info("Exited the load_object method of utils")
+
+        return obj
+
+    except Exception as e:
+        raise USvisaException(e, sys) from e
 
 def save_numpy_array_data(file_path: str, array: np.array):
     """
@@ -44,6 +59,18 @@ def save_numpy_array_data(file_path: str, array: np.array):
     except Exception as e:
         raise USvisaException(e, sys) from e
         
+def load_numpy_array_data(file_path: str) -> np.array:
+    """
+    load numpy array data from file
+    file_path: str location of file to load
+    return: np.array data loaded
+    """
+    try:
+        with open(file_path, 'rb') as file_obj:
+            return np.load(file_obj)
+    except Exception as e:
+        raise USvisaException(e, sys) from e
+
 def save_object(file_path: str, obj: object) -> None:
     logging.info("Entered the save_object method of utils")
 
