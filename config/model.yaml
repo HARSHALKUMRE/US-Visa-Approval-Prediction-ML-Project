@@ -2,47 +2,46 @@ grid_search:
   class: GridSearchCV
   module: sklearn.model_selection
   params:
-    cv: 3
-    verbose: 3
+    cv: 2
+    verbose: 2
 model_selection:
   module_0:
+    class: RandomForestClassifier
+    module: sklearn.ensemble 
+    params:
+      max_depth: 0.1
+      max_features: 5
+      min_samples_split: 2
+      n_estimators: 100
+    search_param_grid:
+      min_samples_split: 
+      - 2
+      - 8
+      - 15
+      max_features:
+      - 5
+      - "sqrt"
+      - "log2"
+      n_estimators:
+      - 100
+      - 200
+      - 1000
+      max_depth:
+      - 5
+      - 8
+      - 10
+  module_1: 
     class: KNeighborsClassifier
     module: sklearn.neighbors
     params:
-      algorithm: kd_tree
+      n_neighbors: 2
       weights: uniform
-      n_neighbors: 3
     search_param_grid:
-      algorithm:
-      - auto
-      - ball_tree
-      - kd_tree
-      - brute
-      weights:
-      - uniform
-      - distance
       n_neighbors:
       - 3
       - 5
       - 9
-
-      
-  module_1:
-    class: RandomForestClassifier
-    module: sklearn.ensemble
-    params:
-      max_depth: 10
-      max_features: sqrt
-      n_estimators: 3
-    search_param_grid:
-      max_depth:
-      - 10
-      - 15
-      - 20
-      max_features:
-      - sqrt
-      - log2
-      n_estimators:
-      - 3
-      - 5
-      - 9
+      - 11
+      weights:
+      - uniform
+      - distance
