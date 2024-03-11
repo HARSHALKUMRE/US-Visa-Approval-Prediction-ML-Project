@@ -22,6 +22,5 @@ fastapi
 uvicorn
 jinja2
 python-multipart
-from-root
 python-dotenv
 -e .
